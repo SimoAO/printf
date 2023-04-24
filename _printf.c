@@ -9,21 +9,23 @@
 
 int _printf(const char *format, ...)
 {
-	int i, count = 0;
+	int count = 0;
 	va_list data;
 	char *str;
+	char c;
 
 	va_start(data, format);
 
-	for (i = 0; format && format[i] != '\0'; i++)
+	for (; *format; format++)
 	{
-	if (format[i] == '%')
+	if (*format == '%')
 	{
-	i++;
-	switch (format[i])
+	format++;
+	switch (*format)
 	{
 	case 'c':
-		count += write(1, va_arg(data, int*), 1);
+		c = va_arg(data, int);
+		count += write(1, &c, 1);
 		break;
 	case 's':
 		str = va_arg(data, char *);
@@ -35,13 +37,14 @@ int _printf(const char *format, ...)
 		count += write(1, "%", 1);
 		break;
 	default:
-		count += write(1, &(format[i - 1]), 2);
+		count += write(1, "%", 1);
+		count += write(1, format, 1);
 		break;
 	}
 	}
 	else
 	{
-	count += write(1, &(format[i]), 1);
+	count += write(1, format, 1);
 	}
 	}
 	va_end(data);
