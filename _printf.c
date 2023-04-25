@@ -10,8 +10,8 @@
 int _printf(const char *format, ...)
 {
 	int count = 0;
-	char *stt, *i;
 	va_list data;
+	char *i;
 	para_m par = PARAMS_INIT;
 
 	va_start(data, format);
@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 	return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 	return (-1);
-	for (i = (char *) format; *i; i++)
+	for (i = (char *)format; *i; i++)
 	{
 	init_params(&par, data);
 	if (*i != '%')
@@ -28,9 +28,9 @@ int _printf(const char *format, ...)
 	count += _putchar(*i);
 	continue;
 	}
-	stt = i;
+	/**stt = i;
 	i++;
-	/**while (get_flag(i, &par))
+	while (get_flag(i, &par))
 	{
 	i++;
 	}
@@ -38,12 +38,10 @@ int _printf(const char *format, ...)
 	i = get_precision(i, &par, data);
 	if (get_modifier(i, &par))
 	i++;
-	*/
 	if (!get_specifier(i))
 	count += print_from_to(stt, i, par.l_modifier
 			 || par.h_modifier ? i - 1 : 0);
-	else
-	count += get_print_func(i, data, &par);
+	count += get_print_func(i, data, &par);*/
 	}
 	_putchar(BUFF_FLUSH);
 	va_end(data);

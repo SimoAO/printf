@@ -5,9 +5,10 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #define BUFF_FLUSH -1
-#define BUFF_SIZE 1024
+#define OUTPUT_BUFF_SIZE 1024
 #define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 #define NULL_STRING "(null)"
 #define CONVERT_UNSIGNED 2
@@ -69,7 +70,7 @@ char *convert(long int num, int base, int flags, para_m *par);
 
 int (*get_specifier(char *s))(va_list data, para_m *par);
 int get_print_func(char *s, va_list data, para_m *par);
-int *get_width(char *s, para_m *par, va_list data);
+char *get_width(char *s, para_m *par, va_list data);
 int get_flag(char *s, para_m *par);
 int get_modifier(char *s, para_m *par);
 
@@ -86,8 +87,8 @@ int _isdigit(int c);
 void init_params(para_m *par, va_list data);
 char *get_precision(char *i, para_m *par, va_list data);
 
-int _puts(char *str);
-int _putchar(char c);
+int print_str(char *str);
+int _putchar(int c);
 int _printf(const char *format, ...);
 
 #endif

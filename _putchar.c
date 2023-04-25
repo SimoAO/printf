@@ -11,14 +11,14 @@
 int _putchar(int c)
 {
 	static int i;
-	static char buf[OUTPUT_BUF_SIZE];
+	static char buff[OUTPUT_BUFF_SIZE];
 
-	if (c == BUFF_FLUSH || i >= OUTPUT_BUF_SIZE)
+	if (c == BUFF_FLUSH || i >= OUTPUT_BUFF_SIZE)
 	{
-	write(1,  buf, i);
+	write(1,  buff, i);
 	i = 0;
 	}
 	if (c != BUFF_FLUSH)
-	buf[i++] = c;
+	buff[i++] = c;
 	return (1);
 }

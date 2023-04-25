@@ -7,7 +7,7 @@
  * Return: characters to be printed
  */
 
-int print_string(char *str)
+int print_str(char *str)
 {
 	char *q = str;
 
