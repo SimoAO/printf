@@ -9,44 +9,42 @@
 
 int _printf(const char *format, ...)
 {
-	int count = 0;
+	int i, len;
 	va_list data;
 	char *str;
 	char c;
 
 	va_start(data, format);
 
-	for (; *format; format++)
+	for (i = 0, len = 0; format && format[i]; i++)
 	{
-	if (*format == '%')
+	if (format[i] == '%')
 	{
-	format++;
-	switch (*format)
+	i++;
+	switch (format[i])
 	{
 	case 'c':
 		c = va_arg(data, int);
-		count += write(1, &c, 1);
+		write(1, &c, 1);
+		len++;
 		break;
 	case 's':
 		str = va_arg(data, char *);
-		if (str == NULL)
-		str = "(null)";
-		count += write(1, str, strlen(str));
+		write(1, str, strlen(str));
+		len += strlen(str);
 		break;
 	case '%':
-		count += write(1, "%", 1);
-		break;
-	default:
-		count += write(1, "%", 1);
-		count += write(1, format, 1);
+		write(1, "%", 1);
+		len++;
 		break;
 	}
 	}
 	else
 	{
-	count += write(1, format, 1);
+	write(1, &format[i], 1);
+	len++;
 	}
 	}
 	va_end(data);
-	return (count);
+	return (len);
 }
