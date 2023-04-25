@@ -14,10 +14,8 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 	return (-1);
-
 	va_start(data, format);
-
-	for (; format[i] != '\0';i++)
+	for (; format[i] != '\0'; i++)
 	{
 	if (format[i] == '%')
 	{
@@ -39,7 +37,6 @@ int _printf(const char *format, ...)
 	default:
 		count += _putchar('%');
 		count += _putchar(format[i]);
-
 	}
 	}
 	else
@@ -48,6 +45,5 @@ int _printf(const char *format, ...)
 	}
 	}
 	va_end(data);
-
 	return (count);
 }
