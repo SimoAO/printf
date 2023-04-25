@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	int count = 0;
-	char *i, *stt;
+	char *stt, *i;
 	va_list data;
 	para_m par = PARAMS_INIT;
 
@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 	return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 	return (-1);
-	for (i = (char *)format; *i; i++)
+	for (i = (char *) format; *i; i++)
 	{
 	init_params(&par, data);
 	if (*i != '%')
@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 	}
 	stt = i;
 	i++;
-	while (get_flag(i, &par))
+	/**while (get_flag(i, &par))
 	{
 	i++;
 	}
@@ -38,6 +38,7 @@ int _printf(const char *format, ...)
 	i = get_precision(i, &par, data);
 	if (get_modifier(i, &par))
 	i++;
+	*/
 	if (!get_specifier(i))
 	count += print_from_to(stt, i, par.l_modifier
 			 || par.h_modifier ? i - 1 : 0);
