@@ -28,9 +28,9 @@ int _printf(const char *format, ...)
 	count += _putchar(*i);
 	continue;
 	}
-	/**stt = i;
+	/*stt = i;*/
 	i++;
-	while (get_flag(i, &par))
+	/**while (get_flag(i, &par))
 	{
 	i++;
 	}
