@@ -2,18 +2,16 @@
 
 /**
  * print_string - a function tht prints a string
- * @string: string to be printed
+ * @str: string to be printed
  *
  * Return: characters to be printed
  */
 
-int print_string(char *string)
+int print_string(char *str)
 {
-	int i = 0, count = 0;
+	char *q = str;
 
-	for (; string[i] != '\0'; i++)
-	{
-	count += _putchar(string[i]);
-	}
-	return (count);
+	while (*str)
+	_putchar(*str++);
+	return (str - q);
 }

@@ -1,14 +1,24 @@
 #include "main.h"
 
 /**
- * _putchar - writes the character c to stdout
- * @c: the character to print
+ * _putchar - writes the character c
+ * @c: character to be print
  *
  * Return: on success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * On fail, -1, and errno is set.
  */
 
-int _putchar(char c)
+int _putchar(int c)
 {
-	return (write(1, &c, 1));
+	static int i;
+	static char buf[OUTPUT_BUF_SIZE];
+
+	if (c == BUFF_FLUSH || i >= OUTPUT_BUF_SIZE)
+	{
+	write(1,  buf, i);
+	i = 0;
+	}
+	if (c != BUF_FLUSH)
+	buf[i++] = c;
+	return (1);
 }

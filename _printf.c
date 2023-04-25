@@ -9,41 +9,42 @@
 
 int _printf(const char *format, ...)
 {
-	int i = 0, count = 0;
+	int count = 0;
+	char *i, *stt;
 	va_list data;
+	para_m par = PARAMS_INIT;
 
-	if (format == NULL)
-	return (-1);
 	va_start(data, format);
-	for (; format[i] != '\0'; i++)
+
+	if (!format || (format[0] == '%' && !format[1]))
+	return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+	return (-1);
+	for (i = (char *)format; *i; i++)
 	{
-	if (format[i] == '%')
+	init_params(&par, data);
+	if (*i != '%')
+	{
+	count += _putchar(*i);
+	continue;
+	}
+	stt = i;
+	i++;
+	while (get_flag(i, &par))
 	{
 	i++;
-	switch (format[i])
-	{
-	case 'c':
-		count += _putchar(va_arg(data, int));
-		break;
-	case 's':
-		count += print_string(va_arg(data, char *));
-		break;
-	case '%':
-		count += _putchar('%');
-		break;
-	case '\0':
-		va_end(data);
-		return (-1);
-	default:
-		count += _putchar('%');
-		count += _putchar(format[i]);
 	}
-	}
+	i = get_width(i, &par, data);
+	i = get_precision(i, &par, data);
+	if (get_modifier(i, &par))
+	i++;
+	if (!get_specifier(i))
+	count += print_from_to(stt, i, par.l_modifier
+			 || par.h_modifier ? i - 1 : 0);
 	else
-	{
-	count += _putchar(format[i]);
+	count += get_print_func(i, data, &par);
 	}
-	}
+	_putchar(BUFF_FLUSH);
 	va_end(data);
 	return (count);
 }
