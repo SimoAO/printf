@@ -12,13 +12,17 @@ int _printf(const char *format, ...)
 	int i = 0, count = 0;
 	va_list data;
 
+	if (format == NULL)
+	return (-1);
+
 	va_start(data, format);
 
-	for (; format[i] != '\0';)
+	for (; format[i] != '\0';i++)
 	{
-	if (format[i] == '%' && format[i + 1] != ' ')
+	if (format[i] == '%')
 	{
-	switch (format[i + 1])
+	i++;
+	switch (format[i])
 	{
 	case 'c':
 		count += _putchar(va_arg(data, int));
@@ -29,17 +33,21 @@ int _printf(const char *format, ...)
 	case '%':
 		count += _putchar('%');
 		break;
+	case '\0':
+		va_end(data);
+		return (-1);
 	default:
-		break;
+		count += _putchar('%');
+		count += _putchar(format[i]);
 
 	}
-	i += 2;
 	}
 	else
 	{
 	count += _putchar(format[i]);
-	i++;
 	}
 	}
+	va_end(data);
+
 	return (count);
 }
