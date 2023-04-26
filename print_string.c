@@ -1,17 +1,19 @@
 #include "main.h"
 
 /**
- * print_string - a function tht prints a string
- * @str: string to be printed
+ * print_string - print a string
+ * @data: data
  *
- * Return: characters to be printed
+ * Return: string length
  */
 
-int print_str(char *str)
+int print_string(va_list data)
 {
-	char *q = str;
+	int sl;
+	char *s;
 
-	while (*str)
-	_putchar(*str++);
-	return (str - q);
+	s = va_arg(data, char *);
+	sl = print_ch((s != NULL) ? s : "(null)");
+
+	return (sl);
 }
