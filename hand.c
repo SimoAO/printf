@@ -13,8 +13,8 @@ int hand(const char *str, va_list data)
 {
 	int i = 0, x;
 	int count = 0;
-	
-	for (;str[i] != '\0'; i++)
+
+	for (; str[i] != '\0'; i++)
 	{
 	if (str[i] == '%')
 	{

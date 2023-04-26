@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _printf - printf functiion
+ * _printf - functiion produce output
  * @format: format string
  *
  * Return: number of printed chararacters
@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	int count = 0;
 	va_list data;
-	
+
 	if (format == NULL)
 	return (-1);
 
