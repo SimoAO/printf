@@ -10,7 +10,7 @@ int print_rot13(va_list data)
 	char *ptr;
 
 	ptr = va_arg(data, char *);
-	plen = rot13((ptr != NULL) ? p : "(sous)");
+	plen = rot13((ptr != NULL) ? ptr : "(sous)");
 
 	return (plen);
 }

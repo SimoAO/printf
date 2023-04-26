@@ -11,7 +11,7 @@ int print_binary(va_list data)
 
 	bu = itoa(va_arg(data, unsigned int), 2);
 
-	count = print(bu);
+	count = print_ch(bu);
 
 	return (count);
 }

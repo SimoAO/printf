@@ -26,7 +26,7 @@ int print_HEX(va_list data);
 int print_hex(va_list data);
 int print_oct(va_list data);
 int print_point(va_list data);
-int print_unsig(va_list data);
+int print_unsign(va_list data);
 int print_rot13(va_list data);
 int print_rev(va_list data);
 

@@ -1,4 +1,4 @@
-#include "mian.h"
+#include "main.h"
 /**
  * print_rev - function prints str in reverse
  * @data: arguments
