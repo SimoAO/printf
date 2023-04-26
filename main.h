@@ -43,4 +43,7 @@ int buff(char);
 int _printf(const char *format, ...);
 int _strcmp(char *str1, char *str2);
 
+int is_lowercase(char c);
+char *str_to_upper(char *str);
+
 #endif
