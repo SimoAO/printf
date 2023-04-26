@@ -31,13 +31,13 @@ int print_pointer(va_list data)
 	bu = itoa(va_arg(data, unsigned long int), 16);
 
 	if (!_strcmp(bu, "0"))
-		return (print("(nil)"));
+		return (print_ch("(nil)"));
 
-	count = print("0x");
+	count = print_ch("0x");
 
 	if (!_strcmp(bu, "-1"))
-		count += print("ffffffffffffffff");
+		count += print_ch("ffffffffffffffff");
 	else
-		count += print(bu);
+		count += print_ch(bu);
 	return (count);
 }
