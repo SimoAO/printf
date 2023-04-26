@@ -41,5 +41,6 @@ int _putchar(char c);
 int buff(char);
 
 int _printf(const char *format, ...);
+int _strcmp(char *str1, char *str2);
 
 #endif

@@ -9,7 +9,7 @@ int print_binary(va_list data)
 	int count;
 	char *bu;
 
-	pb = itoa(va_arg(data, unsigned int), 2);
+	bu = itoa(va_arg(data, unsigned int), 2);
 
 	count = print(bu);
 
