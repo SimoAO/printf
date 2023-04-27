@@ -15,5 +15,5 @@ char *str_to_upper(char *str)
 			str[q] = str[q] - 32;
 		}
 	}
-	return (s);
+	return (str);
 }

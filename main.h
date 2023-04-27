@@ -45,5 +45,6 @@ int _strcmp(char *str1, char *str2);
 
 int is_lowercase(char c);
 char *str_to_upper(char *str);
+int rot13(char *st);
 
 #endif
