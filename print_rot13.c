@@ -1,6 +1,6 @@
 #include "main.h"
-/**
- * print_rot13 - print the rot string
+i/**
+ * print_rot13 - a function that prints the rot string
  * @data: string to code
  * Return: length of the string
  */

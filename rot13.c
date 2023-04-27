@@ -1,9 +1,11 @@
 #include "main.h"
+
 /**
  * rot13 - encode string
  * @st: string
  * Return: string
  */
+
 int rot13(char *st)
 {
 	int q, w;
